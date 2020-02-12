@@ -35,7 +35,15 @@ def lista_eventos(request):
     usuario = request.user
     data_atual = datetime.now() - timedelta(hours=1)
     evento = Evento.objects.filter(usuario=usuario, data_evento__gt=data_atual)
-    dados = {'eventos':evento}
+    dados = {'eventos':evento, 'passado': False}
+    return render(request, 'agenda.html', dados)
+
+@login_required(login_url='/login/')
+def lista_eventos_passados(request):
+    usuario = request.user
+    data_atual = datetime.now()  - timedelta(hours=1)
+    evento = Evento.objects.filter(usuario=usuario, data_evento__lt=data_atual)
+    dados = {'eventos':evento, 'passado': True}
     return render(request, 'agenda.html', dados)
 
 @login_required(login_url='/login/')

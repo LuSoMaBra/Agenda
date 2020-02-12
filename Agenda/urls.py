@@ -23,6 +23,7 @@ urlpatterns = [
     path('agenda/', views.lista_eventos),
     path('agenda/lista/', views.json_lista_evento),
     path('agenda/evento/', views.evento),
+    path('agenda/passado/', views.lista_eventos_passados),
     path('agenda/evento/submit', views.submit_evento),
     path('agenda/evento/delete/<int:id_evento>/', views.delete_evento),
     path('', RedirectView.as_view(url='/agenda/')),
