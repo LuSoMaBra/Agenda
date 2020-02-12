@@ -25,7 +25,7 @@ def submit_login(request):
             login(request, usuario)
             return redirect('/')
         else:
-            messages.error(request, "Usuário e Senha inválidos!")
+            messages.error(request, "Usuário e/ou Senha inválidos!")
     return redirect('/')
 
 @login_required(login_url='/login/')
